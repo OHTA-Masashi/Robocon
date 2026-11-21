@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := chiroboard_Nucleo_test
+BUILD_ARTIFACT_NAME := Chiroboard_Nucleo
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-chiroboard_Nucleo_test.elf \
+Chiroboard_Nucleo.elf \
 
 MAP_FILES += \
-chiroboard_Nucleo_test.map \
+Chiroboard_Nucleo.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-chiroboard_Nucleo_test.list \
+Chiroboard_Nucleo.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: chiroboard_Nucleo_test.elf secondary-outputs
+main-build: Chiroboard_Nucleo.elf secondary-outputs
 
 # Tool invocations
-chiroboard_Nucleo_test.elf chiroboard_Nucleo_test.map: $(OBJS) $(USER_OBJS) C:\Users\cansa\STM32CubeIDE\workspace_1.17.0\chiroboard_Nucleo_test\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "chiroboard_Nucleo_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\cansa\STM32CubeIDE\workspace_1.17.0\chiroboard_Nucleo_test\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="chiroboard_Nucleo_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Chiroboard_Nucleo.elf Chiroboard_Nucleo.map: $(OBJS) $(USER_OBJS) C:\Users\cansa\STM32CubeIDE\workspace_1.17.0\Chiroboard_Nucleo\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Chiroboard_Nucleo.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\cansa\STM32CubeIDE\workspace_1.17.0\Chiroboard_Nucleo\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Chiroboard_Nucleo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-chiroboard_Nucleo_test.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "chiroboard_Nucleo_test.list"
+Chiroboard_Nucleo.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Chiroboard_Nucleo.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) chiroboard_Nucleo_test.elf chiroboard_Nucleo_test.list chiroboard_Nucleo_test.map default.size.stdout
+	-$(RM) Chiroboard_Nucleo.elf Chiroboard_Nucleo.list Chiroboard_Nucleo.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
